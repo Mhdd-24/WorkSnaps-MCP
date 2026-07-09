@@ -1,0 +1,103 @@
+export const WS = {
+  SERVER: {
+    NAME: '@mhdd_24/worksnaps-mcp',
+    VERSION: '1.0.0',
+    STARTUP_MESSAGE: 'Worksnaps MCP Server Started',
+    FATAL_PREFIX: 'Fatal error:',
+  },
+  API: {
+    DEFAULT_BASE_URL: 'https://api.worksnaps.com/api',
+    PATHS: {
+      ME: '/me.xml',
+      PROJECTS: '/projects.xml',
+      TASKS: '/projects/{projectId}/tasks.xml',
+      TIME_ENTRIES: '/projects/{projectId}/time_entries.xml',
+    },
+    TEN_MINUTE_SECONDS: 600,
+  },
+  HEADERS: {
+    CONTENT_TYPE: 'Content-Type',
+    ACCEPT: 'Accept',
+    AUTHORIZATION: 'Authorization',
+    XML: 'application/xml',
+  },
+  HTTP: {
+    SUCCESS_MIN: 200,
+    SUCCESS_MAX: 299,
+  },
+  LIMITS: {
+    ERROR_BODY_SLICE: 400,
+    RESPONSE_BODY_SLICE: 800,
+    EMPTY_BODY: '(empty)',
+  },
+  DATE: {
+    LOCALE: 'en-CA',
+    PATTERN: /^\d{4}-\d{2}-\d{2}$/,
+    PATTERN_MESSAGE: 'date must be YYYY-MM-DD',
+  },
+  ENV: {
+    API_TOKEN_KEYS: ['WORKSNAPS_API_TOKEN', 'worksnapsApiToken', 'WORKSNAPS_TOKEN', 'worksnapsToken'] as const,
+    BASE_URL_KEYS: ['WORKSNAPS_BASE_URL', 'worksnapsBaseUrl'] as const,
+    DEFAULT_PROJECT_ID_KEYS: ['WORKSNAPS_DEFAULT_PROJECT_ID', 'worksnapsDefaultProjectId'] as const,
+    DEFAULT_TASK_ID_KEYS: ['WORKSNAPS_DEFAULT_TASK_ID', 'worksnapsDefaultTaskId'] as const,
+  },
+  TOOLS: {
+    WHOAMI: {
+      NAME: 'whoami',
+      DESCRIPTION:
+        'Resolve the current Worksnaps user from the API token (GET /me.xml). Returns user id, login, name, and email.',
+      TOKEN_DESCRIPTION: 'Worksnaps API token. Optional if WORKSNAPS_API_TOKEN is set.',
+      RESOLVED_HEADER: 'Resolved user from Worksnaps /me.xml:',
+      LABELS: {
+        USER_ID: 'userId',
+        LOGIN: 'login',
+        NAME: 'name',
+        EMAIL: 'email',
+        TIMEZONE: 'timezone',
+      },
+      FAILURE: 'whoami failed',
+    },
+    LIST_PROJECTS: {
+      NAME: 'list_projects',
+      DESCRIPTION: 'List Worksnaps projects the current user can access (GET /projects.xml).',
+      TOKEN_DESCRIPTION: 'Worksnaps API token. Optional if WORKSNAPS_API_TOKEN is set.',
+      COUNT_PREFIX: 'projects available:',
+      BULLET_PREFIX: '- ',
+      FAILURE: 'list_projects failed',
+    },
+    LIST_TASKS: {
+      NAME: 'list_tasks',
+      DESCRIPTION: 'List tasks in a Worksnaps project (GET /projects/{projectId}/tasks.xml).',
+      TOKEN_DESCRIPTION: 'Worksnaps API token. Optional if WORKSNAPS_API_TOKEN is set.',
+      PROJECT_DESCRIPTION: 'Worksnaps project ID.',
+      COUNT_PREFIX: 'tasks in project',
+      BULLET_PREFIX: '- ',
+      FAILURE: 'list_tasks failed',
+    },
+    LOG_TIME: {
+      NAME: 'log_time',
+      DESCRIPTION:
+        'Log offline time to Worksnaps for yourself (POST /projects/{projectId}/time_entries.xml). Requires projectId, taskId, and minutes.',
+      TOKEN_DESCRIPTION: 'Worksnaps API token. Optional if WORKSNAPS_API_TOKEN is set.',
+      MINUTES_DESCRIPTION: 'Duration in minutes for the offline time entry.',
+      COMMENT_DESCRIPTION: 'Optional work description (user_comment).',
+      PROJECT_DESCRIPTION: 'Worksnaps project ID. Optional if WORKSNAPS_DEFAULT_PROJECT_ID is set.',
+      TASK_DESCRIPTION: 'Worksnaps task ID. Optional if WORKSNAPS_DEFAULT_TASK_ID is set.',
+      DATE_DESCRIPTION: 'Entry date YYYY-MM-DD. Defaults to today (local). from_timestamp aligns to a 10-minute boundary.',
+      START_HOUR_DESCRIPTION: 'Optional local hour (0-23) on the entry date for from_timestamp. Defaults to 9.',
+      SUCCESS: '✅ Offline time logged',
+      FAILURE: '❌ Worksnaps time entry failed',
+      TOOL_FAILURE: 'log_time failed',
+    },
+  },
+  MESSAGES: {
+    MISSING_TOKEN_HINT: 'Worksnaps MCP: WORKSNAPS_API_TOKEN is not set. Pass `token` per tool call or set the env var.',
+    NO_TOKEN: 'No API token provided. Pass `token` as a tool argument or set WORKSNAPS_API_TOKEN.',
+    PROJECT_ID_REQUIRED: 'projectId is required. Pass it to the tool or set WORKSNAPS_DEFAULT_PROJECT_ID in env.',
+    TASK_ID_REQUIRED: 'taskId is required. Pass it to the tool or set WORKSNAPS_DEFAULT_TASK_ID in env.',
+    NETWORK: 'Network error calling Worksnaps API:',
+    REQUEST_FAILED: 'Worksnaps request failed:',
+    PARSE_FAILED: 'Could not parse Worksnaps XML response.',
+    GENERIC_ERROR_PREFIX: 'Error:',
+  },
+} as const;
