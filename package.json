@@ -1,54 +1,54 @@
 {
-  "name": "@mhdd_24/worksnaps-mcp",
-  "version": "1.0.0",
-  "description": "MCP server for Worksnaps time tracking: whoami, list projects/tasks, and log offline time from Cursor",
-  "type": "module",
-  "main": "./dist/index.js",
-  "bin": {
-    "worksnaps-mcp": "dist/index.js"
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "docs/WIKI.md"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "dev": "tsx src/index.ts",
-    "build": "tsc",
-    "prepack": "npm run build",
-    "start": "node dist/index.js"
-  },
-  "keywords": [
-    "mcp",
-    "model-context-protocol",
-    "worksnaps",
-    "time-tracking",
-    "cursor"
-  ],
-  "author": "Mhdd-24",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mhdd-24/Worksnaps-MCP.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Mhdd-24/Worksnaps-MCP/issues"
-  },
-  "homepage": "https://github.com/Mhdd-24/Worksnaps-MCP#readme",
-  "license": "ISC",
-  "engines": {
-    "node": ">=18"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.29.0",
-    "dotenv": "^17.4.2",
-    "zod": "^4.4.3"
-  },
-  "devDependencies": {
-    "@types/node": "^26.1.0",
-    "tsx": "^4.22.4",
-    "typescript": "^6.0.3"
-  }
+    "name": "@mhdd_24/worksnaps-mcp",
+    "version": "1.1.1",
+    "description": "MCP server for Worksnaps time tracking: whoami, list projects/tasks, and log offline time from Cursor",
+    "type": "module",
+    "main": "./dist/index.js",
+    "bin": {
+        "worksnaps-mcp": "dist/index.js"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "docs/WIKI.md"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "dev": "tsx src/index.ts",
+        "build": "tsc",
+        "prepack": "npm run build",
+        "start": "node dist/index.js"
+    },
+    "keywords": [
+        "mcp",
+        "model-context-protocol",
+        "worksnaps",
+        "time-tracking",
+        "cursor"
+    ],
+    "author": "Mhdd-24",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Mhdd-24/Worksnaps-MCP.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Mhdd-24/Worksnaps-MCP/issues"
+    },
+    "homepage": "https://github.com/Mhdd-24/Worksnaps-MCP#readme",
+    "license": "ISC",
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.29.0",
+        "dotenv": "^17.4.2",
+        "zod": "^4.4.3"
+    },
+    "devDependencies": {
+        "@types/node": "^26.1.0",
+        "tsx": "^4.22.4",
+        "typescript": "^6.0.3"
+    }
 }
